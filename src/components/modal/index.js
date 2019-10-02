@@ -1,7 +1,7 @@
-import React, {Fragment } from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 
-const Modal = styled.div`
+const ModalBlock = styled.div`
   align-items: center;
   bottom: 0;
   justify-content: center;
@@ -14,7 +14,26 @@ const Modal = styled.div`
   display: flex;
   opacity: 1;
   z-index: 400;
-`; 
+`;
+
+
+const ModalOverlay = styled.a`
+  background: rgba(247, 248, 249, 0.75);
+  bottom: 0;
+  cursor: default;
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+`;
+
+const ModalClose = styled.a`
+  float: right !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  font-size: 1rem;
+`;
 
 const ModalContainer = styled.div`
   background: #ffffff;
@@ -42,7 +61,7 @@ const ModalHeader = styled.div`
 `;
 
 const ModalTitle = styled.h2`
-font-weight:700;
+  font-weight: 700;
 `;
 
 const ModalFooter = styled.div`
@@ -50,47 +69,24 @@ const ModalFooter = styled.div`
   text-align: right;
 `;
 
-const Close = styled.a`
-  float: right !important;
-  text-decoration: none !important;
-  cursor: pointer;
-  font-size: 1rem;
-`;
 
-const ModalOverlay = styled.a`
-  background: rgba(247, 248, 249, 0.75);
-  bottom: 0;
-  cursor: default;
-  display: block;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-`;
-
-const ModalComponent = ({
-  title,
-  footer,
-  children,
-  isModalOpen,
-  toggleModal
-}) => {
+const Modal = ({ title, footer, children, isModalOpen, toggleModal }) => {
   return (
     <Fragment>
       {isModalOpen && (
-        <Modal>
+        <ModalBlock>
           <ModalOverlay onClick={toggleModal}></ModalOverlay>
           <ModalContainer>
             <ModalHeader>
-              <Close onClick={toggleModal}>x</Close>
+              <ModalClose onClick={toggleModal}>x</ModalClose>
               <ModalTitle>{title}</ModalTitle>
             </ModalHeader>
             <ModalBody>{children}</ModalBody>
             <ModalFooter>{footer}</ModalFooter>
           </ModalContainer>
-        </Modal>
+        </ModalBlock>
       )}
     </Fragment>
   );
 };
-export default ModalComponent;
+export default Modal;
