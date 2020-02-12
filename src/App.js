@@ -1,38 +1,15 @@
-import React from "react";
+import React,{useState} from "react";
 import Modal from "./components/modal";
-import styled from "styled-components";
+import { Button } from "./components/button";
 
-const Button = styled.button`
-  background: #5755d9;
-  color: white;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.55em 1em;
-  border: 2px solid #5755d9;
-  border-radius: 3px;
-`;
-
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isModalOpen: false
-    };
-  }
-
-  toggleModal = () => {
-    this.setState(prevState => {
-      return { isModalOpen: !prevState.isModalOpen };
-    });
-  };
-
-  render() {
-    return (
+const App =()=> {
+  const [active, setActive] = useState(false)
+     return (
       <div>
-        <Button onClick={() => this.toggleModal()}>Open Modal</Button>
+        <Button onClick={() =>setActive(true)}>Open Modal</Button>
         <Modal
-          isModalOpen={this.state.isModalOpen}
-          toggleModal={this.toggleModal}
+          active={active}
+          hideModal={()=>setActive(false)}
           title="Bla !! the title goes here"
           footer={<Button>Footer Button</Button>}
         >
@@ -40,7 +17,6 @@ class App extends React.Component {
         </Modal>
       </div>
     );
-  }
 }
 
 export default App;

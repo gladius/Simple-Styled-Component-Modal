@@ -70,15 +70,15 @@ const ModalFooter = styled.div`
 `;
 
 
-const Modal = ({ title, footer, children, isModalOpen, toggleModal }) => {
+const Modal = ({ title, footer, children, active, hideModal }) => {
   return (
     <Fragment>
-      {isModalOpen && (
+      {active && (
         <ModalBlock>
-          <ModalOverlay onClick={toggleModal}></ModalOverlay>
+          <ModalOverlay onClick={()=>hideModal()}></ModalOverlay>
           <ModalContainer>
             <ModalHeader>
-              <ModalClose onClick={toggleModal}>x</ModalClose>
+              <ModalClose onClick={()=>hideModal()}>x</ModalClose>
               <ModalTitle>{title}</ModalTitle>
             </ModalHeader>
             <ModalBody>{children}</ModalBody>
