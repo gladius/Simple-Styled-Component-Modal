@@ -1,6 +1,6 @@
 ## Simple Styled Modal Component
 
-A super simple modal component build based on css excerpt from spectre.css.
+Just a simple modal component build using styled components.
 
 [![Open with ThePro](https://thepro.io/button.svg)](https://thepro.io/post/simple-modal-component-using-styled-components-7g)
 
